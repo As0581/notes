@@ -9,15 +9,7 @@ const MainPage = () => {
     const [searchQuery, setSearchQuery] = useState("")
     const [notes, setNotes] = useState(() => {
         const savedNotes = localStorage.getItem("notes")
-        return savedNotes
-            ? JSON.parse(savedNotes)
-            : [
-                  {
-                      id: crypto.randomUUID(),
-                      title: "Новая заметка",
-                      content: "",
-                  },
-              ]
+        return savedNotes ? JSON.parse(savedNotes) : []
     })
 
     const inputRef = useRef(null)
