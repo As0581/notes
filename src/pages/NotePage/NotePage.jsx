@@ -22,13 +22,13 @@ const NotePage = () => {
         )
 
         if (currentNote.title.trim() === "") {
-            const isAgree = confirm(
-                "Удалить заметку (вы оставили пустой заголовок)",
-            )
+            // const isAgree = confirm(
+            //     "Удалить заметку??? (вы оставили пустой заголовок)",
+            // )
 
-            if (isAgree) {
-                alert("Заметка удалена")
-            }
+            // if (isAgree) {
+            //     alert("Заметка удалена")
+            // }
 
             const filteredNotes = updatedNotes.filter((note) => note.id !== id)
             localStorage.setItem("notes", JSON.stringify(filteredNotes))
@@ -60,7 +60,7 @@ const NotePage = () => {
                         })
                     }
                     value={currentNote.title}
-                    placeholder="Заголовок"
+                    placeholder="Заголовок (если пустой, то не сохраню)"
                     type="text"
                     className={styles.titleInput}
                 ></textarea>
