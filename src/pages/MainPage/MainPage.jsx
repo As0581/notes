@@ -106,7 +106,7 @@ const MainPage = () => {
                     notes={filteredNotes}
                 />
             ) : (
-                <p>Ничего не найдено</p>
+                <p>Ничего нет</p>
             )}
 
             <button onClick={addNote} className={styles.add}>
