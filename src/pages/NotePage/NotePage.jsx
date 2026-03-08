@@ -28,7 +28,7 @@ const NotePage = () => {
         }
     }, [currentNote?.title, currentNote?.content])
 
-    const save = () => {
+    const linkSave = () => {
         if (!currentNote) return
 
         const notes = JSON.parse(localStorage.getItem("notes") || "[]")
@@ -54,6 +54,16 @@ const NotePage = () => {
         }
     }
 
+    const save = () => {
+        if (!currentNote) return
+
+        const notes = JSON.parse(localStorage.getItem("notes") || "[]")
+        const updatedNotes = notes.map((note) =>
+            note.id === currentNote.id ? currentNote : note,
+        )
+        localStorage.setItem("notes", JSON.stringify(updatedNotes))
+    }
+
     if (!currentNote) {
         return (
             <div>
@@ -65,9 +75,20 @@ const NotePage = () => {
     return (
         <div className={styles.container}>
             <main className={styles.main}>
-                <Link onClick={save} className={styles.homeLink} to={"/"}>
-                    Назад
-                </Link>
+                <div className={styles.top}>
+                    <Link
+                        onClick={linkSave}
+                        className={styles.homeLink}
+                        to={"/"}
+                    >
+                        Назад
+                    </Link>
+
+                    <button className={styles.save} onClick={save}>
+                        Сохранить
+                    </button>
+                </div>
+
                 <textarea
                     ref={titleRef}
                     onChange={(e) =>
