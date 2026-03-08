@@ -23,7 +23,8 @@
     color: #fff;
     margin-bottom: 16px;
     resize: none;
-    field-sizing: content;
+    overflow: hidden;
+    min-height: 50px; /* Минимальная высота */
     height: auto;
     max-width: 100vw;
 }
@@ -35,9 +36,8 @@
     font-size: 20px;
     color: #fff;
     resize: none; /* Запрещаем ручное изменение размера */
-    /* overflow: hidden; */
+    overflow: hidden;
     min-height: 50px; /* Минимальная высота */
-    field-sizing: content;
     height: auto;
     max-width: 100%;
     box-sizing: border-box;

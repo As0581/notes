@@ -7,6 +7,14 @@ li {
     align-items: center;
     border-radius: 15px;
     gap: 10px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.title {
+    flex: 1;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .button {
@@ -32,4 +40,5 @@ li {
 
 p {
     color: #000 !important;
+    word-wrap: break-word;
 }

@@ -41,10 +41,6 @@ img {
     /* transition: width 0.4s ease; */
 }
 
-p {
-    color: #fff !important;
-}
-
 .searchBox {
     display: flex;
     border-radius: 20px;
@@ -53,6 +49,10 @@ p {
     overflow: hidden;
     justify-content: space-between;
     margin-bottom: 20px;
+}
+
+p {
+    color: #fff !important;
 }
 
 .searchBox.active {

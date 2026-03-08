@@ -4,7 +4,7 @@ const NoteItem = (props) => {
     const { title, id, deleteNote, handleRedirect } = props
     return (
         <li id={id}>
-            <p>{title}</p>
+            <span className={styles.title}>{title}</span>
             <div className={styles.buttons}>
                 <button
                     className={styles.button}

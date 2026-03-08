@@ -1,5 +1,3 @@
-import { useState } from "react"
-import ReactDOM from "react-dom/client"
 import { Routes, Route } from "react-router-dom"
 import "./App.css"
 import MainPage from "./pages/MainPage/MainPage"
