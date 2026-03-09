@@ -64,6 +64,15 @@ const MainPage = () => {
     }, [searchQuery, notes])
 
     useEffect(() => {
+        notes.map((note) => {
+            const noteID = note.id
+            note.title.trim() === ""
+                ? setNotes(notes.filter((note) => note.id !== noteID))
+                : null
+        })
+    }, [])
+
+    useEffect(() => {
         localStorage.setItem("notes", JSON.stringify(notes))
     }, [notes])
 

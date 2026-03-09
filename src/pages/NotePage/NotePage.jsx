@@ -1,11 +1,15 @@
 import { useEffect, useState, useRef } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 
 import styles from "./NotePage.module.css"
 
 const NotePage = () => {
     const { id } = useParams()
+    const navigate = useNavigate()
+
     const [currentNote, setCurrentNote] = useState(null)
+    const [isSaved, setIsSaved] = useState(false)
+
     const titleRef = useRef(null)
     const contentRef = useRef(null)
 
@@ -28,7 +32,7 @@ const NotePage = () => {
         }
     }, [currentNote?.title, currentNote?.content])
 
-    const linkSave = () => {
+    const linkSave = (e) => {
         if (!currentNote) return
 
         const notes = JSON.parse(localStorage.getItem("notes") || "[]")
@@ -37,20 +41,21 @@ const NotePage = () => {
         )
 
         if (currentNote.title.trim() === "") {
-            const isAgree = confirm(
-                "Удалить заметку??? (вы оставили пустой заголовок)",
-            )
+            e.preventDefault()
+
+            const isAgree = confirm("Удалить заметку??? (пустой заголовок)")
 
             if (isAgree) {
-                alert("Заметка удалена")
                 const filteredNotes = updatedNotes.filter(
-                    (note) => note.id !== id,
+                    (note) => note.id !== currentNote.id,
                 )
                 localStorage.setItem("notes", JSON.stringify(filteredNotes))
+                alert("Заметка удалена")
+
+                navigate("/")
             }
         } else {
             localStorage.setItem("notes", JSON.stringify(updatedNotes))
-            // alert("Сохранено успешно!")
         }
     }
 
@@ -62,6 +67,11 @@ const NotePage = () => {
             note.id === currentNote.id ? currentNote : note,
         )
         localStorage.setItem("notes", JSON.stringify(updatedNotes))
+        setIsSaved(true)
+
+        setTimeout(() => {
+            setIsSaved(false)
+        }, 2000)
     }
 
     if (!currentNote) {
@@ -75,6 +85,9 @@ const NotePage = () => {
     return (
         <div className={styles.container}>
             <main className={styles.main}>
+                <div className={isSaved ? styles.modalActive : styles.modal}>
+                    Успешно сохранено
+                </div>
                 <div className={styles.top}>
                     <Link
                         onClick={linkSave}

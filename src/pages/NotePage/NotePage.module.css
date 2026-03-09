@@ -2,6 +2,7 @@
     background-color: #252525;
     display: flex;
     flex-direction: column;
+    padding: 10px 20px;
 }
 
 .container {
@@ -21,7 +22,9 @@
     border-radius: 8px;
     transition: all 0.3s;
 }
-.homeLink:hover {
+
+.homeLink:hover,
+.save:hover {
     background-color: #fff;
     color: #252525;
     transition: all 0.3s;
@@ -67,15 +70,34 @@
     border-radius: 8px;
     transition: all 0.3s;
 }
-.save:hover {
-    background-color: #fff;
-    color: #252525;
-    transition: all 0.3s;
-}
 
 .top {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
     position: fixed;
+}
+
+.modalActive {
+    top: 50px;
+    position: fixed;
+    z-index: 2;
+    align-self: center;
+    background-color: #fff;
+    color: #252525;
+    padding: 7px 20px;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.modal {
+    top: -50px;
+    position: fixed;
+    z-index: 2;
+    align-self: center;
+    background-color: #fff;
+    color: #252525;
+    padding: 7px 20px;
+    border-radius: 10px;
+    transition: all 0.3s;
 }
